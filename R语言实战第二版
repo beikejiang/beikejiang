@@ -39,7 +39,7 @@ detach(Afghan)
 
 attach(Afghan)
 plot(year, lifeExp, type="b", lty=5, pch=17, lwd=2)
-#abline(lm(lifeExp~year))
+abline(lm(lifeExp~year))
 title("阿富汗预期寿命变化")
 detach(Afghan)
 
