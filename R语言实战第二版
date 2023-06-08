@@ -1,1 +1,56 @@
+#创建一个数据框
+patientID <- c(1, 2, 3, 4) 
+age <- c(25, 34, 28, 52) 
+diabetes <- c("Type1", "Type2", "Type1", "Type1") 
+status <- c("Poor", "Improved", "Excellent", "Poor") 
+patientdata <- data.frame(patientID, age, diabetes, status) 
+patientdata  
+#列表
+table(patientdata$diabetes, patientdata$status)
+
+
+#编辑数据
+mydata <- data.frame(age=numeric(0), 
+                     gender=character(0), weight=numeric(0)) 
+mydata <- edit(mydata) 
+mydata
+
+gapdata <- read.csv("C:/Users/jiangj59/Documents/R test/gapminder.csv")
+gapdata
+str(gapdata)
+summary(gapdata$lifeExp)
+
+#函数attach()可将数据框添加到R的搜索路径中。R在遇到一个变量名以后，将检查搜索路径中的数据框。
+attach(gapdata)
+summary(lifeExp)
+detach(gapdata)
+
+#选取1-12行的数据
+Afghan <- gapdata[c(1:12),]
+Afghan
+str(Afghan)
+
+#画图
+attach(Afghan)
+plot(year, lifeExp)
+abline(lm(lifeExp~year))
+title("阿富汗预期寿命变化")
+detach(Afghan)
+
+attach(Afghan)
+plot(year, lifeExp, type="b", lty=5, pch=17, lwd=2)
+#abline(lm(lifeExp~year))
+title("阿富汗预期寿命变化")
+detach(Afghan)
+
+
+#选择数据国家是Afghanistan的数据
+Afghantest2 <- gapdata[gapdata$country == "Afghanistan",]
+Afghantest 
+
+#选择数据国家是Afghanistan的数据
+attach(gapdata)
+Afghantest <- gapdata[country == "Afghanistan",]
+Afghantest 
+detach(gapdata)
 
